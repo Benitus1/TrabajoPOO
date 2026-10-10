@@ -1,46 +1,46 @@
-CREATE DATABASE IF NOT EXISTS ecotech_db CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
-USE ecotech_db;
+create database if not exists ecotech_db character set utf8mb4 collate utf8mb4_spanish_ci;
+use ecotech_db;
 
-CREATE TABLE IF NOT EXISTS empleados (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    telefono VARCHAR(20) NOT NULL,
-    salario DECIMAL(10, 2) NOT NULL,
-    rol VARCHAR(50) NOT NULL DEFAULT 'Empleado'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+create table if not exists empleados (
+    id int auto_increment primary key,
+    nombre varchar(100) not null,
+    email varchar(100) not null,
+    telefono varchar(20) not null,
+    salario decimal(10, 2) not null,
+    rol varchar(50) not null default 'Empleado'
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_spanish_ci;
 
-CREATE TABLE IF NOT EXISTS proyectos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    descripcion VARCHAR(255) NOT NULL,
-    fecha_inicio DATE NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+create table if not exists proyectos (
+    id int auto_increment primary key,
+    nombre varchar(100) not null,
+    descripcion varchar(255) not null,
+    fecha_inicio date not null
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_spanish_ci;
 
-CREATE TABLE IF NOT EXISTS registros_tiempo (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    horas DECIMAL(5, 2) NOT NULL,
-    descripcion_tarea VARCHAR(255) NOT NULL,
-    fecha DATE NOT NULL,
-    empleado_id INT NOT NULL,
-    proyecto_id INT NOT NULL,
-    CONSTRAINT fk_registro_empleado FOREIGN KEY (empleado_id) 
-        REFERENCES empleados(id) ON UPDATE CASCADE ON DELETE RESTRICT,
-    CONSTRAINT fk_registro_proyecto FOREIGN KEY (proyecto_id) 
-        REFERENCES proyectos(id) ON UPDATE CASCADE ON DELETE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+create table if not exists registros_tiempo (
+    id int auto_increment primary key,
+    horas decimal(5, 2) not null,
+    descripcion_tarea varchar(255) not null,
+    fecha date not null,
+    empleado_id int not null,
+    proyecto_id int not null,
+    constraint fk_registro_empleado foreign key (empleado_id) 
+        references empleados(id) on update cascade on delete restrict,
+    constraint fk_registro_proyecto foreign key (proyecto_id) 
+        references proyectos(id) on update cascade on delete restrict
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_spanish_ci;
 
-INSERT INTO empleados (nombre, email, telefono, salario, rol) VALUES
+insert into empleados (nombre, email, telefono, salario, rol) values
 ('Ana Silva', 'ana.silva@ecotech.cl', '+56911111111', 1400000.00, 'Empleado'),
 ('Carlos Ruiz', 'carlos.ruiz@ecotech.cl', '+56922222222', 2200000.00, 'Gerente'),
 ('Beatriz Soto', 'beatriz.soto@ecotech.cl', '+56933333333', 1200000.00, 'Empleado');
 
-INSERT INTO proyectos (nombre, descripcion, fecha_inicio) VALUES
-('Parque Solar Atacama', 'Instalación de paneles solares fotovoltaicos', '2026-03-01'),
-('Gestión Hídrica Central', 'Monitoreo de consumo de agua residual', '2026-04-15'),
-('Auditoría Energética', 'Revisión de consumo en plantas industriales', '2026-05-10');
+insert into proyectos (nombre, descripcion, fecha_inicio) values
+('Parque Solar Atacama', 'Instalacion de paneles solares fotovoltaicos', '2026-03-01'),
+('Gestion Hidrica Central', 'Monitoreo de consumo de agua residual', '2026-04-15'),
+('Auditoria Energetica', 'Revision de consumo en plantas industriales', '2026-05-10');
 
-INSERT INTO registros_tiempo (horas, descripcion_tarea, fecha, empleado_id, proyecto_id) VALUES
-(5.0, 'Diseño de circuitos eléctricos', '2026-04-01', 1, 1),
-(8.0, 'Reunión de coordinación y presupuesto', '2026-04-02', 2, 1),
+insert into registros_tiempo (horas, descripcion_tarea, fecha, empleado_id, proyecto_id) values
+(5.0, 'Diseno de circuitos electricos', '2026-04-01', 1, 1),
+(8.0, 'Reunion de coordinacion y presupuesto', '2026-04-02', 2, 1),
 (4.5, 'Toma de muestras de caudal', '2026-04-05', 3, 2);
