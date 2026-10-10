@@ -1,7 +1,6 @@
 import hashlib
 from datetime import date
 
-# 1. Entidad Base: Empleado
 class Empleado:
     def __init__(self, id_empleado: str, nombre: str, direccion: str, telefono: str, email: str, fecha_inicio: date, salario: float):
         self.__id_empleado = id_empleado
@@ -14,7 +13,6 @@ class Empleado:
 
     @property
     def salario(self) -> float:
-        """Getter con decorador @property (encapsulamiento 2.1.2)."""
         return self.__salario
 
     @salario.setter
@@ -32,7 +30,6 @@ class Empleado:
         return True
 
 
-#Gerente
 class Gerente(Empleado):
     def __init__(self, id_empleado: str, nombre: str, direccion: str, telefono: str, email: str, fecha_inicio: date, salario: float, bono_gestion: float):
         super().__init__(id_empleado, nombre, direccion, telefono, email, fecha_inicio, salario)
@@ -45,7 +42,6 @@ class Gerente(Empleado):
         pass
 
 
-#Departamento
 class Departamento:
     def __init__(self, id_depto: str, nombre: str, gerente: Gerente = None):
         self.__id_depto = id_depto
@@ -67,7 +63,6 @@ class Departamento:
         return self.__empleados
 
 
-#Proyecto
 class Proyecto:
     def __init__(self, id_proyecto: str, nombre: str, descripcion: str, fecha_inicio: date):
         self.__id_proyecto = id_proyecto
@@ -87,7 +82,6 @@ class Proyecto:
         return {"id": self.__id_proyecto, "nombre": self.__nombre, "integrantes": len(self.__equipo)}
 
 
-#RegistroTiempo
 class RegistroTiempo:
     def __init__(self, id_registro: str, fecha: date, horas: float, descripcion_tarea: str, empleado: Empleado, proyecto: Proyecto):
         self.__id_registro = id_registro
@@ -101,10 +95,9 @@ class RegistroTiempo:
         return self.__horas > 0
 
     def obtener_detalle(self) -> str:
-        return f"Registro {self.__id_registro}: {self.__horas}h en tarea {self.__descripcion_tarea}"
+        return f"registro {self.__id_registro}: {self.__horas}h en tarea {self.__descripcion_tarea}"
 
 
-# 6. Seguridad: Usuario
 class Usuario:
     def __init__(self, id_usuario: str, username: str, password_plana: str, rol: str, empleado_asociado: Empleado):
         self.__id_usuario = id_usuario
@@ -127,16 +120,15 @@ class Usuario:
         return False
 
 
-#GeneradorInformes
 class GeneradorInformes:
     def __init__(self, formato_salida: str = "PDF"):
         self.__formato_salida = formato_salida
 
     def exportar_informe_empleados(self, dept: Departamento, formato: str):
-        return f"Reporte del departamento exportado en formato {formato}"
+        return f"informe del departamento en formato {formato}"
 
     def exportar_informe_horas_proyecto(self, proy: Proyecto, formato: str):
-        return f"Reporte de horas del proyecto exportado en formato {formato}"
+        return f"informe de horas del proyecto en formato {formato}"
 
     def generar_consolidado_horas(self, registros: list[RegistroTiempo]):
-        return "Consolidado generado con éxito"
+        return "consolidado generado"
