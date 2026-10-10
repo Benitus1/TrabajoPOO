@@ -31,9 +31,9 @@ create table if not exists registros_tiempo (
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_spanish_ci;
 
 insert into empleados (nombre, email, telefono, salario, rol) values
-('Ana Silva', 'ana.silva@ecotech.cl', '+56911111111', 1400000.00, 'Empleado'),
-('Carlos Ruiz', 'carlos.ruiz@ecotech.cl', '+56922222222', 2200000.00, 'Gerente'),
-('Beatriz Soto', 'beatriz.soto@ecotech.cl', '+56933333333', 1200000.00, 'Empleado');
+('Ana Silva', 'ana.silva@ecotech.cl', '+56983619052', 1400000.00, 'Empleado'),
+('Carlos Ruiz', 'carlos.ruiz@ecotech.cl', '+56951284703', 2200000.00, 'Gerente'),
+('Beatriz Soto', 'beatriz.soto@ecotech.cl', '+56974821639', 1200000.00, 'Empleado');
 
 insert into proyectos (nombre, descripcion, fecha_inicio) values
 ('Parque Solar Atacama', 'Instalacion de paneles solares fotovoltaicos', '2026-03-01'),
