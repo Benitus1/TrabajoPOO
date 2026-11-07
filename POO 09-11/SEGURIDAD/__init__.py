@@ -1,0 +1,1 @@
+"""Módulo de seguridad: autenticación, hashing de credenciales y validación de entradas."""

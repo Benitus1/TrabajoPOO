@@ -1,0 +1,1 @@
+"""Módulo de consumo de servicios externos (APIs)."""
